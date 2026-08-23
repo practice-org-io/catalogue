@@ -19,6 +19,17 @@ pipeline{
     //     password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
     // }
     stages{
+        stage('Read version'){
+            steps {
+                script {
+                    // Load and parse the JSON file
+                    def packageJson = readJSON file: 'package.json'
+                    
+                    // Access fields directly
+                    appVersion = packageJson.version
+                    echo "Building version ${appVersion}"
+                }
+        }
         stage('build') {
             steps{
                 script{
