@@ -4,9 +4,9 @@ pipeline{
             label 'ROBOSHOP'
         }
     }
-    // environment{
-    //     COURSE ="Jenkins"
-    // }
+    environment{
+        appVersion = ""
+    }
     options{
         //disableConcurrentBuilds()
         timeout(time: 5, unit: 'MINUTES')
@@ -30,7 +30,7 @@ pipeline{
                     echo "Building version ${appVersion}"
                 }
         }
-        stage('build') {
+        stage('Install Dependencies') {
             steps{
                 script{
                     sh """
