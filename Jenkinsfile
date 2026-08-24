@@ -34,9 +34,7 @@ pipeline{
             steps{
                 script{
                     sh """
-                        echo "Building"
-                        echo $COURSE
-                        sleep 5
+                        npm install
                     """
                 }
             }
